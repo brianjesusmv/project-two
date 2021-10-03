@@ -4,12 +4,15 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import DefaultPage from '../../components/DefaultPage'
 import { userLogin } from '../../redux/actions/user.actions'
+import BackgroundPage from '../../components/global/layout/BackgroundPage'
+import backgroundImage from '../../../assets/icon.png';
+import TextButton from '../../components/global/ui/TextButton'
 
 const SceneLogin = ({ loginUser, isUserLoggedIn, storedUserName }) => {
   const [name, setName] = useState('')
 
   return (
-    <DefaultPage>
+    <BackgroundPage background={backgroundImage}>
       <Text>
         Login
       </Text>
@@ -18,14 +21,15 @@ const SceneLogin = ({ loginUser, isUserLoggedIn, storedUserName }) => {
         onChangeText={(text) => setName(text)}
         value={name}
       />
-      <Button
-        title="Press me"
+      <TextButton
+        title="Login"
+        type="secondary"
         onPress={() => loginUser(name || 'Anon')}
       />
 
       {isUserLoggedIn ? (<Text>{`Welcome, ${storedUserName}!`}</Text>) : undefined}
 
-    </DefaultPage>
+    </BackgroundPage>
   )
 }
 
