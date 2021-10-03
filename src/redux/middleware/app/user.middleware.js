@@ -1,5 +1,5 @@
 import { USER_LOGIN } from '../../actions/user.actions'
-import * as RootNavigation from '../../reducers/rootNavigation'
+import * as RootNavigation from '../../../navigation/rootNavigation'
 
 const fakeLoginCheck = () => true // It's an older code, sir, but it checks out.
 

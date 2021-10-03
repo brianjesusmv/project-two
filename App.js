@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { enableScreens } from 'react-native-screens';
 import configureStore from './src/redux/store'
 import { initialiseApplication } from './src/redux/actions/application.actions'
-import Navigation from './src/components/navigation'
+import Navigation from './src/navigation/navigation'
 
 enableScreens();
 
