@@ -1,21 +1,21 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
-import { enableScreens } from 'react-native-screens';
-import configureStore from './src/redux/store'
-import { initialiseApplication } from './src/redux/actions/application.actions'
-import Navigation from './src/navigation/navigation'
+import { PersistGate } from 'redux-persist/integration/react'
+import { enableScreens } from 'react-native-screens'
+import store, { persistor } from './src/redux/store'
+import Navigation from './src/navigation'
+import SceneAppLoading from './src/scenes/auth/sceneAppLoading'
 
-enableScreens();
-
-const store = configureStore()
-store.dispatch(initialiseApplication())
+enableScreens()
 
 export default function App() {
   return (
     <Provider store={store}>
-      <StatusBar hidden={true} />
-      <Navigation />
+      <PersistGate loading={<SceneAppLoading />} persistor={persistor}>
+        <StatusBar hidden />
+        <Navigation />
+      </PersistGate>
     </Provider>
   )
 }

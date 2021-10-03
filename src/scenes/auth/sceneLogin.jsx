@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Text, TextInput, Button } from 'react-native'
+import { Text, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import DefaultPage from '../../components/DefaultPage'
 import { userLogin } from '../../redux/actions/user.actions'
 import BackgroundPage from '../../components/global/layout/BackgroundPage'
 import backgroundImage from '../../../assets/icon.png';
