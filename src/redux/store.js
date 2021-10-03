@@ -1,23 +1,17 @@
-import { applyMiddleware, createStore } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist'
-import { AsyncStorage } from 'react-native'
+import { applyMiddleware, compose, createStore } from 'redux'
 import rootReducer from './reducers/rootReducer'
 import middleware from './middleware'
 
-const persistConfig = {
-  key: 'root',
-  storage: AsyncStorage,
-}
+const initialState = {}
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-const store = createStore(
-  persistedReducer,
-  applyMiddleware(
-    ...middleware,
-  ),
+const composeEnhancers = compose(
+  applyMiddleware(...middleware),
 )
 
-export const persistor = persistStore(store)
+const configureStore = () => {
+  const store = createStore(rootReducer, initialState, composeEnhancers)
 
-export default store
+  return store
+}
+
+export default configureStore

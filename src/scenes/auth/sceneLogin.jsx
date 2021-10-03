@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
-import { Text, TextInput } from 'react-native'
+import { Text, TextInput, StyleSheet, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { userLogin } from '../../redux/actions/user.actions'
-import BackgroundPage from '../../components/global/layout/BackgroundPage'
-import backgroundImage from '../../../assets/icon.png';
 import TextButton from '../../components/global/ui/TextButton'
 
 const SceneLogin = ({ loginUser, isUserLoggedIn, storedUserName }) => {
   const [name, setName] = useState('')
 
   return (
-    <BackgroundPage background={backgroundImage}>
+    <ImageBackground style={styles.imageBackground}>
       <Text>
         Login
       </Text>
@@ -28,9 +26,19 @@ const SceneLogin = ({ loginUser, isUserLoggedIn, storedUserName }) => {
 
       {isUserLoggedIn ? (<Text>{`Welcome, ${storedUserName}!`}</Text>) : undefined}
 
-    </BackgroundPage>
+    </ImageBackground>
   )
 }
+
+const styles = StyleSheet.create({
+  imageBackground: {
+    flex: 1,
+    flexDirection: 'column',
+    resizeMode: 'cover',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+})
 
 SceneLogin.defaultProps = { storedUserName: '' }
 
